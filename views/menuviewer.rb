@@ -13,5 +13,6 @@ module MenuViewer
       Schedule  # Schedule a specified type of appointment, e.g. schedule haircut, schedule shampoohaircut
 
     MAINMENU
+    gets.chomp
   end
 end

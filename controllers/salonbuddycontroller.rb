@@ -5,7 +5,12 @@ class SalonBuddyController
       @schedule = Schedule.new
     end
 
-    def run
+    def menu_handler
+      user_input = MenuViewer.menu
+    end
 
+    def run
+      MenuViewer.Welcome
+      menu_handler
     end
 end
