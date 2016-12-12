@@ -1,6 +1,15 @@
 module MenuViewer
   def self.welcome
     puts <<-WELCOME.gsub(/^ {4}/, '')
+      .----.
+     / .--. \
+    | (    ) |              ___...---.
+     \ '--'  '----._..---"""___...---'`
+      '-.--:------|_()---"""__
+     / .--.  .----'`''---...__"""---..
+    | (    ) |                """---''`
+    \  \'--' /
+      '----'
     Welcome to SalonBuddy, the leading tool for hairdressers for keeping track of haircut appointments.
     WELCOME
   end
