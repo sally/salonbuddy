@@ -1,0 +1,3 @@
+class ShampooHaircut < Appointment
+
+end

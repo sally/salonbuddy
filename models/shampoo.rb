@@ -1,3 +1,0 @@
-class Shampoo < Appointment
-
-end
