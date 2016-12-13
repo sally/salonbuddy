@@ -11,7 +11,6 @@ module MenuViewer
                                                      "
     puts banner
     puts <<-WELCOME.gsub(/^ {4}/, '')
-
     Welcome to SalonBuddy, the leading tool for hairdressers for keeping track of haircut appointments.
     WELCOME
   end
