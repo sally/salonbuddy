@@ -25,4 +25,8 @@ module MenuViewer
     MAINMENU
     gets.chomp
   end
+
+  def self.invalid_input
+    puts "Invalid input. Please try again."
+  end
 end

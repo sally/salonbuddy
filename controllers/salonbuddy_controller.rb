@@ -17,7 +17,7 @@ class SalonBuddyController
         when "exit"
           puts "Thank you for using SalonBuddy. :)"
         else
-          puts "Invalid input. Please try again."
+          MenuViewer.invalid_input
           user_input = Viewer.menu.downcase
         end
     end
