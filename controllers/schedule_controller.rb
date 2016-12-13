@@ -4,7 +4,7 @@ require_relative '../models/shampoohaircut'
 require_relative '../views/schedule_viewer'
 
 require 'date'
-require 'active_support/core_ext/datetime'
+require 'active_support/core_ext/date_time'
 
 class ScheduleController
 
