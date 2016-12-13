@@ -46,7 +46,12 @@ class ScheduleController
   def get_date
     date = ScheduleViewer.ask_date
 
-    # put validations for date here
+    if date =~ /\A\d{1,2}\/\d{1,2}\/\d{2}\z/
+
+    else
+      ScheduleViewer.invalid_input("date")
+      get_date
+    end
   end
 
   def get_time
