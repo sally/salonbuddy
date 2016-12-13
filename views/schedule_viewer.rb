@@ -30,6 +30,7 @@ module ScheduleViewer
       Appointment Type: #{appointment_type}
       Client Name:      #{appointment_hash[:client_name]}
       Client Phone:     #{appointment_hash[:client_phone]}
+      Date:             #{appointment_hash}[:start_datetime.strftime('%B %e, %Y')]
       Time:             #{appointment_hash[:start_datetime].strftime('%I:%M%p')}
     CONFIRM
     gets.chomp
