@@ -33,9 +33,14 @@ class ScheduleController
   end
 
   def get_phone
-    phone = ScheduleViewer.ask_phone
+    phone = ScheduleViewer.ask_phone.gsub(/\D/, '')
 
-    # put validations for phone number here
+    if phone.length == 10
+      phone
+    else
+      ScheduleViewer.invalid_input("phone")
+      get_phone
+    end
   end
 
   def get_date
