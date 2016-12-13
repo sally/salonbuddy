@@ -18,7 +18,7 @@ class ScheduleController
     @start_datetime = get_date
     get_time
     attr_hash[:start_datetime] = @start_datetime
-    @appointment = Appointment.new(attr_hash)
+    p @appointment = @type.new(attr_hash)
   end
 
   def get_type
