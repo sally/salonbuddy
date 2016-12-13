@@ -20,7 +20,7 @@ module MenuViewer
     Please type the command you wish to execute. To exit the program, type 'exit'.
 
       List      # List all future appointments in ascending chronological order
-      Schedule  # Schedule a specified type of appointment, e.g. schedule haircut, schedule shampoohaircut
+      Schedule  # Schedule a specified type of appointment, either haircut or shampoohaircut
 
     MAINMENU
     gets.chomp

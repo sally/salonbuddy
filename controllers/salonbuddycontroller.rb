@@ -13,13 +13,17 @@ class SalonBuddyController
         when "list"
           puts "I totally didn't implement this yet."
         when "schedule"
-          puts "I totally didn't implement this yet."
+          schedule_handler
         when "exit"
           puts "Thank you for using SalonBuddy. :)"
         else
           puts "Invalid input. Please try again."
           user_input = Viewer.menu.downcase
         end
+    end
+
+    def schedule_handler
+      
     end
 
     def run
