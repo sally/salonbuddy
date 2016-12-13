@@ -25,6 +25,7 @@ module ScheduleViewer
   end
 
   def self.confirm(appointment_type, appointment_hash)
+    system "clear"
     puts "Here are your appointment details. Is this correct? (y/n)"
     puts <<-CONFIRM.gsub(/^ {4}/, '')
       Appointment Type: #{appointment_type}
