@@ -3,6 +3,9 @@ require_relative '../models/haircut'
 require_relative '../models/shampoohaircut'
 require_relative '../views/schedule_viewer'
 
+require 'date'
+require 'active_support'
+
 class ScheduleController
 
   def initialize
@@ -47,9 +50,10 @@ class ScheduleController
     date = ScheduleViewer.ask_date
 
     if date =~ /\A\d{1,2}\/\d{1,2}\/\d{2}\z/
-
+      parsable_date = date[-2..-1] + "/" + date[0...-2]
+      if DateTime.new(parsable_date) <
     else
-      ScheduleViewer.invalid_input("date")
+      ScheduleViewer.invalid_input("date_format")
       get_date
     end
   end
