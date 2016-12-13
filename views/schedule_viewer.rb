@@ -20,7 +20,7 @@ module ScheduleViewer
   end
 
   def get_time
-    puts "Enter the time of the appointment in HH:MM AM/PM (e.g. 5:30 PM)."
+    puts "Enter the time of the appointment in HH:mmAM/PM (e.g. 5:30PM)."
     gets.chomp
   end
 
@@ -35,7 +35,9 @@ module ScheduleViewer
       when "date_past"
         "Invalid date. You can't book an appointment in the past. Enter a date in the form MM/DD/YY (e.g. 12/15/16)."
       when "time_format"
-        "Invalid time. Enter a time in the form HH:MM AM/PM (e.g. 5:30 PM)."
+        "Invalid time. Enter a time in the form HH:MM AM/PM (e.g. 5:30PM)."
+      when "time_past"
+        "Invalid time. You can't book an appointment in the past. Enter a time in the for HH:mmAM/PM (e.g. 5:30PM)"
     end
   end
 end
