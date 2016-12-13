@@ -51,7 +51,13 @@ class ScheduleController
 
     if date =~ /\A\d{1,2}\/\d{1,2}\/\d{2}\z/
       parsable_date = date[-2..-1] + "/" + date[0...-2]
-      if DateTime.new(parsable_date) < DateTime.now.end_of_day
+      start_datetime = DateTime.new(parsable_date)
+      if start_datetime < DateTime.now.end_of_day
+        @start_datetime = start_datetime
+      else
+        ScheduleViewer.invalid_input("date_past")
+        get_date
+      end
     else
       ScheduleViewer.invalid_input("date_format")
       get_date
