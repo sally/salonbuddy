@@ -1,5 +1,5 @@
 require_relative '../models/schedule.rb'
-require_relative '../views/menuviewer'
+require_relative '../views/menu_viewer'
 
 class SalonBuddyController
     def initialize
@@ -23,7 +23,7 @@ class SalonBuddyController
     end
 
     def schedule_handler
-      
+
     end
 
     def run
