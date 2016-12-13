@@ -9,6 +9,7 @@ require 'active_support/core_ext/time'
 require 'active_support/core_ext/date_time'
 
 class ScheduleController
+  attr_reader :appointment
 
   def initialize
     @type = get_type
