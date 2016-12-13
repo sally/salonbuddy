@@ -15,7 +15,7 @@ class ScheduleController
     @attr_hash = Hash.new
     attr_hash[:client_name] = get_name
     attr_hash[:client_phone] = get_phone
-    get_date
+    @start_datetime = get_date
     get_time
     attr_hash[:start_datetime] = @start_datetime
     @appointment = Appointment.new(attr_hash)
@@ -76,21 +76,21 @@ class ScheduleController
     time = ScheduleViewer.ask_time.downcase
 
     if time =~ /\A\d{1,2}:\d{2}(am|pm)\z/
-      hour = time.split(":").first
-      min = time.split(":").last[0..1]
+      hour = time.split(":").first.to_i
+      min = time.split(":").last[0..1].to_i
       meridiem = time.split(":").last[2..3]
 
       if meridiem == "pm"
-        @start_time = @start_time.change(hour: hour+12, min: min)
+        @start_datetime = @start_datetime.change(hour: hour+12, min: min)
       else
-        @start_time = @start_time.change(hour: hour, min: min)
+        @start_datetime = @start_datetime.change(hour: hour, min: min)
       end
 
-      if @start_time <= DateTime.now
+      if @start_datetime <= DateTime.now
         ScheduleViewer.invalid_input("time_past")
         get_time
       else
-        @start_time
+        @start_datetime
       end
     else
       ScheduleViewer.invalid_input("time_format")
