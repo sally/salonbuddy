@@ -18,7 +18,7 @@ module MenuViewer
 
   def self.menu
     puts <<-MAINMENU.gsub(/^ {4}/, '')
-    Please type the command you wish to execute. To exit the program, type 'exit'.
+    \nPlease type the command you wish to execute. To exit the program, type 'exit'.
 
       List      # List all future appointments in ascending chronological order
       Schedule  # Schedule a specified type of appointment, either haircut or shampoohaircut
