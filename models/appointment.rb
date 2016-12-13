@@ -9,6 +9,6 @@ class Appointment
   private
 
   def set_end_time(start_datetime)
-    @end_time = @start_datetime.clone.advance(minutes: +self.class::DURATION)
+    @end_datetime = @start_datetime.clone.advance(minutes: +self.class::DURATION)
   end
 end

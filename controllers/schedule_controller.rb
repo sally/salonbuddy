@@ -22,7 +22,7 @@ class ScheduleController
     p @start_datetime
     ScheduleViewer.confirm(@type.to_s, @appointment_hash)
     @appointment = @type.new(appointment_hash)
-    ScheduleViewer.success
+    ScheduleViewer.success(@appointment)
   end
 
   def get_type
