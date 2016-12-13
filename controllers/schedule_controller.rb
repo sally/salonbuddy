@@ -13,9 +13,7 @@ class ScheduleController
     @attr_hash = Hash.new
     attr_hash[:client_name] = get_name
     attr_hash[:client_phone] = get_phone
-    attr_hash[:date] = get_date
-    attr_hash[:time] = get_time
-    type.new(attr_hash)
+    @start_time = get_date
   end
 
   def get_type
@@ -53,7 +51,7 @@ class ScheduleController
       parsable_date = date[-2..-1] + "/" + date[0...-2]
       start_datetime = DateTime.new(parsable_date)
       if start_datetime < DateTime.now.end_of_day
-        @start_datetime = start_datetime
+        start_datetime
       else
         ScheduleViewer.invalid_input("date_past")
         get_date
@@ -65,13 +63,26 @@ class ScheduleController
   end
 
   def get_time
-    time = ScheduleViewer.ask_time
+    time = ScheduleViewer.ask_time.downcase
 
-    # put validations for time here
+    if time =~ /\A\d{1,2}:\d{2}(am|pm)\z/
+      hour = time.split(":").first
+      minute = time.split(":").last[0..1]
+      meridiem = time.split(":").last[2..3]
+
+      if meridiem == "pm"
+        @start_time.change(hour: hour, minute: minute)
+      else
+
+      end
+    else
+      ScheduleViewer.invalid_input("time_format")
+      get_time
+    end
   end
 
   private
 
   attr_reader :type
-  attr_accessor :attr_hash
+  attr_accessor :attr_hash, :start_time
 end
