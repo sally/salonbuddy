@@ -4,6 +4,16 @@ module ScheduleViewer
     gets.chomp
   end
 
+  def self.ask_name
+    puts "Enter the name of the client."
+    gets.chomp
+  end
+
+  def self.ask_phone
+    puts "Enter the phone number of the client."
+    gets.chomp
+  end
+
   def self.invalid_input(field)
     case field
       when "type"
