@@ -35,8 +35,8 @@ module ScheduleViewer
     gets.chomp
   end
 
-  def self.success(appointment_hash)
-    "Booked your #{@appointment.class} apppointment from #{@appointment.start_datetime.strftime('%I:%M%p')} to #{@appointment.end_datetime.strftime('%I:%M%p')} with #{@appointment.client_name}."
+  def self.success(appointment)
+    "Booked your #{appointment.class} apppointment from #{appointment.start_datetime.strftime('%I:%M%p')} to #{appointment.end_datetime.strftime('%I:%M%p')} with #{appointment.client_name}."
   end
 
   def self.invalid_input(field)
