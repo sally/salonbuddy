@@ -12,13 +12,15 @@ class ScheduleController
 
   def initialize
     @type = get_type
-    @attr_hash = Hash.new
-    attr_hash[:client_name] = get_name
-    attr_hash[:client_phone] = get_phone
+    @appointment_hash = Hash.new
+    appointment_hash[:client_name] = get_name
+    appointment_hash[:client_phone] = get_phone
     @start_datetime = get_date
     get_time
-    attr_hash[:start_datetime] = @start_datetime
-    p @appointment = @type.new(attr_hash)
+    appointment_hash[:start_datetime] = @start_datetime
+    ScheduleViewer.confirmation
+    @appointment = @type.new(appointment_hash)
+    ScheduleViewer.success
   end
 
   def get_type
@@ -101,5 +103,5 @@ class ScheduleController
   private
 
   attr_reader :type
-  attr_accessor :attr_hash, :start_time
+  attr_accessor :appointment_hash, :start_time
 end

@@ -24,6 +24,14 @@ module ScheduleViewer
     gets.chomp
   end
 
+  def self.confirmation(appointment_hash)
+
+  end
+
+  def self.success(appointment_hash)
+    # "Booked your appointment for #{appointment_hash[:start_datetime]}"
+  end
+
   def self.invalid_input(field)
     case field
       when "type"
