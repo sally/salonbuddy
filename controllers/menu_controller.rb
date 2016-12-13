@@ -2,7 +2,7 @@ require_relative 'menu_controller'
 require_relative '../models/schedule'
 require_relative '../views/menu_viewer'
 
-class SalonBuddyController
+class MenuController
     def initialize
       @schedule = Schedule.new
     end
