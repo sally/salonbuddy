@@ -1,4 +1,4 @@
-require_relative 'controllers/salonbuddycontroller.rb'
+require_relative 'controllers/salonbuddy_controller'
 
 scheduler = SalonBuddyController.new
 
