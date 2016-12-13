@@ -1,5 +1,15 @@
 module MenuViewer
   def self.welcome
+    banner = "
+               _             _               _     _             _    _
+     ___  __ _| | ___  _ __ | |__  _   _  __| | __| |_   _      (_)  / )
+    / __|/ _` | |/ _ \\| '_ \\| '_ \\| | | |/ _` |/ _` | | | |       | (_/
+    \\__ \\ (_| | | (_) | | | | |_) | |_| | (_| | (_| | |_| |      _+/
+    |___/\\__,_|_|\\___/|_| |_|_.__/ \\__,_|\\__,_|\\__,_|\\__, |     //|\\
+                                                     |___/     // | )
+                                                              (/  |/
+                                                     "
+    puts banner
     puts <<-WELCOME.gsub(/^ {4}/, '')
     Welcome to SalonBuddy, the leading tool for hairdressers for keeping track of haircut appointments.
     WELCOME
