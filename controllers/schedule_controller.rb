@@ -74,7 +74,7 @@ class ScheduleController
       meridiem = time.split(":").last[2..3]
 
       if meridiem == "pm"
-        @start_time.change(hour: hour, min: min)
+        @start_time = @start_time.change(hour: hour, min: min)
 
         if @start_time <= DateTime.now
           ScheduleViewer.invalid_input("time_past")
