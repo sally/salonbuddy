@@ -14,12 +14,12 @@ module ScheduleViewer
     gets.chomp
   end
 
-  def ask_date
+  def self.ask_date
     puts "Enter the date of the appointment in MM/DD/YY format (e.g. 12/15/16)."
     gets.chomp
   end
 
-  def ask_time
+  def self.ask_time
     puts "Enter the time of the appointment in HH:mmAM/PM (e.g. 5:30PM)."
     gets.chomp
   end
