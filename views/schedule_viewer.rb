@@ -24,8 +24,15 @@ module ScheduleViewer
     gets.chomp
   end
 
-  def self.confirmation(appointment_hash)
-
+  def self.confirm(appointment_type, appointment_hash)
+    puts "Here are your appointment details. Is this correct? (y/n)"
+    puts <<-CONFIRM.gsub(/^ {4}/, '')
+      Appointment Type: #{appointment_type}
+      Client Name:      #{appointment_hash[:client_name]}
+      Client Phone:     #{appointment_hash[:client_phone]}
+      Time:             #{appointment_hash[:start_datetime].strftime('%I:%m%p')}
+    CONFIRM
+    gets.chomp
   end
 
   def self.success(appointment_hash)

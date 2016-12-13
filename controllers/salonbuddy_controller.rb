@@ -25,6 +25,7 @@ class SalonBuddyController
 
     def schedule_handler
       ScheduleController.new
+      menu_handler
     end
 
     def run

@@ -18,7 +18,7 @@ class ScheduleController
     @start_datetime = get_date
     get_time
     appointment_hash[:start_datetime] = @start_datetime
-    ScheduleViewer.confirmation
+    ScheduleViewer.confirm(@type.to_s, @appointment_hash)
     @appointment = @type.new(appointment_hash)
     ScheduleViewer.success
   end
@@ -59,9 +59,9 @@ class ScheduleController
       month = parsable_date.first
       day = parsable_date[1]
       year = parsable_date.last
-      p start_datetime = DateTime.now.change(month: month, day: day, year: year)
-      p DateTime.now.advance(days: -1).end_of_day
-      p start_datetime < DateTime.now.advance(days: -1).end_of_day
+      start_datetime = DateTime.now.change(month: month, day: day, year: year)
+      DateTime.now.advance(days: -1).end_of_day
+      start_datetime < DateTime.now.advance(days: -1).end_of_day
       if start_datetime < DateTime.now.advance(days: -1).end_of_day
         ScheduleViewer.invalid_input("date_past")
         get_date
@@ -82,8 +82,10 @@ class ScheduleController
       min = time.split(":").last[0..1].to_i
       meridiem = time.split(":").last[2..3]
 
+      p @start_datetime
+
       if meridiem == "pm"
-        @start_datetime = @start_datetime.change(hour: hour+12, min: min)
+        p @start_datetime = @start_datetime.change(hour: hour+12, min: min)
       else
         @start_datetime = @start_datetime.change(hour: hour, min: min)
       end
@@ -97,6 +99,13 @@ class ScheduleController
     else
       ScheduleViewer.invalid_input("time_format")
       get_time
+    end
+  end
+
+  def confirm
+    response = ScheduleViewer.confirm
+    if response == "n"
+      puts "LOL too bad"
     end
   end
 
