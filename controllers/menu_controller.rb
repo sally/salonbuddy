@@ -1,4 +1,5 @@
 require_relative 'schedule_controller'
+require_relative 'list_controller'
 require_relative '../models/schedule'
 require_relative '../views/menu_viewer'
 
@@ -12,7 +13,7 @@ class MenuController
 
       case user_input.first
         when "list"
-          puts "I totally didn't implement this yet."
+          list_handler
         when "schedule"
           schedule_handler
         when "exit"
@@ -27,6 +28,10 @@ class MenuController
       schedule_controller = ScheduleController.new
       @schedule.appointments << schedule_controller.appointment
       menu_handler
+    end
+
+    def list_handler
+      ListController.new
     end
 
     def run
