@@ -18,6 +18,8 @@ class ScheduleController
     @start_datetime = get_date
     get_time
     appointment_hash[:start_datetime] = @start_datetime
+    p "-----------------"
+    p @start_datetime
     ScheduleViewer.confirm(@type.to_s, @appointment_hash)
     @appointment = @type.new(appointment_hash)
     ScheduleViewer.success
