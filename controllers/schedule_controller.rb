@@ -4,7 +4,7 @@ require_relative '../models/shampoohaircut'
 require_relative '../views/schedule_viewer'
 
 require 'date'
-require 'active_support'
+require 'active_support/core_ext/datetime'
 
 class ScheduleController
 
@@ -51,7 +51,7 @@ class ScheduleController
 
     if date =~ /\A\d{1,2}\/\d{1,2}\/\d{2}\z/
       parsable_date = date[-2..-1] + "/" + date[0...-2]
-      if DateTime.new(parsable_date) <
+      if DateTime.new(parsable_date) < DateTime
     else
       ScheduleViewer.invalid_input("date_format")
       get_date
