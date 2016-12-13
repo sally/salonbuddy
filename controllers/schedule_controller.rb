@@ -52,12 +52,15 @@ class ScheduleController
   def get_date
     date = ScheduleViewer.ask_date
 
-    if date =~ /\A\d{1,2}\/\d{1,2}\/\d{2}\z/
-      p parsable_date = date[-2..-1] + "/" + date[0...-3]
-      p start_datetime = DateTime.parse(parsable_date)
-      p now.advance(days: -1).end_of_day
-      p start_datetime < now.advance(days: -1).end_of_day
-      if start_datetime < now.advance(days: -1).end_of_day
+    if date =~ /\A\d{1,2}\/\d{1,2}\/\d{4}\z/
+      parsable_date = date.split("/")
+      month = parsable_date.first
+      day = parsable_date[1]
+      year = parsable_data.last
+      p start_datetime = DateTime.new(year, month, day)
+      p DateTime.now.advance(days: -1).end_of_day
+      p start_datetime < DateTime.now.advance(days: -1).end_of_day
+      if start_datetime < DateTime.now.advance(days: -1).end_of_day
         ScheduleViewer.invalid_input("date_past")
         get_date
       else

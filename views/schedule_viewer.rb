@@ -15,7 +15,7 @@ module ScheduleViewer
   end
 
   def self.ask_date
-    puts "Enter the date of the appointment in MM/DD/YY format (e.g. 12/15/16)."
+    puts "Enter the date of the appointment in MM/DD/YYYY format (e.g. 12/15/2016)."
     gets.chomp
   end
 
@@ -27,7 +27,7 @@ module ScheduleViewer
   def self.invalid_input(field)
     case field
       when "type"
-        print "Invalid appointment type. Choose from haircut or shampoohaircut. "
+        print "Invalid appointment type. "
       when "phone"
         print "Invalid phone number. "
       when "date_format"
