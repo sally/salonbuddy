@@ -18,9 +18,7 @@ class ScheduleController
     @start_datetime = get_date
     get_time
     appointment_hash[:start_datetime] = @start_datetime
-    p "-----------------"
-    p @start_datetime
-    ScheduleViewer.confirm(@type.to_s, @appointment_hash)
+    confirm
     @appointment = @type.new(appointment_hash)
     ScheduleViewer.success(@appointment)
   end
@@ -84,10 +82,10 @@ class ScheduleController
       min = time.split(":").last[0..1].to_i
       meridiem = time.split(":").last[2..3]
 
-      p @start_datetime
+      @start_datetime
 
       if meridiem == "pm"
-        p @start_datetime = @start_datetime.change(hour: hour+12, min: min)
+        @start_datetime = @start_datetime.change(hour: hour+12, min: min)
       else
         @start_datetime = @start_datetime.change(hour: hour, min: min)
       end
@@ -105,10 +103,12 @@ class ScheduleController
   end
 
   def confirm
-    response = ScheduleViewer.confirm
+    response = ScheduleViewer.confirm(@type.to_s, @appointment_hash)
+
     if response == "n"
       puts "LOL too bad"
     end
+
   end
 
   private
