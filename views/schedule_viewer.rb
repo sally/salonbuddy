@@ -20,7 +20,7 @@ module ScheduleViewer
   end
 
   def self.ask_time
-    puts "Enter the time of the appointment in HH:mmAM/PM (e.g. 5:30PM)."
+    puts "Enter the time of the appointment in hh:mmAM/PM (e.g. 5:30PM)."
     gets.chomp
   end
 

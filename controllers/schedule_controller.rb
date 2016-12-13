@@ -53,11 +53,11 @@ class ScheduleController
     date = ScheduleViewer.ask_date
 
     if date =~ /\A\d{1,2}\/\d{1,2}\/\d{4}\z/
-      parsable_date = date.split("/")
+      parsable_date = date.split("/").map(&:to_i)
       month = parsable_date.first
       day = parsable_date[1]
-      year = parsable_data.last
-      p start_datetime = DateTime.new(year, month, day)
+      year = parsable_date.last
+      p start_datetime = DateTime.now.change(month: month, day: day, year: year)
       p DateTime.now.advance(days: -1).end_of_day
       p start_datetime < DateTime.now.advance(days: -1).end_of_day
       if start_datetime < DateTime.now.advance(days: -1).end_of_day
@@ -81,16 +81,16 @@ class ScheduleController
       meridiem = time.split(":").last[2..3]
 
       if meridiem == "pm"
-        @start_time = @start_time.change(hour: hour, min: min)
-
-        if @start_time <= DateTime.now
-          ScheduleViewer.invalid_input("time_past")
-          get_time
-        else
-          @start_time
-        end
+        @start_time = @start_time.change(hour: hour+12, min: min)
       else
+        @start_time = @start_time.change(hour: hour, min: min)
+      end
 
+      if @start_time <= DateTime.now
+        ScheduleViewer.invalid_input("time_past")
+        get_time
+      else
+        @start_time
       end
     else
       ScheduleViewer.invalid_input("time_format")
