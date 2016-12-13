@@ -28,6 +28,20 @@ class ScheduleController
     name = ScheduleViewer.ask_name.downcase.split(" ").map(&:capitalize).join(" ")
   end
 
+  def get_phone
+    phone = ScheduleViewer.ask_phone
+
+
+  end
+
+  def get_date
+    date = ScheduleViewer.ask_date
+  end
+
+  def get_time
+    time = ScheduleViewer.ask_time
+  end
+
   private
 
   attr_accessor :attr_hash

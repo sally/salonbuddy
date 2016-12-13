@@ -10,7 +10,17 @@ module ScheduleViewer
   end
 
   def self.ask_phone
-    puts "Enter the phone number of the client."
+    puts "Enter the client's 10-digit phone number (e.g. (415)242-5164)."
+    gets.chomp
+  end
+
+  def get_date
+    puts "Enter the date of the appointment in MM/DD/YYYY format (e.g. 12/15/2016)."
+    gets.chomp
+  end
+
+  def get_time
+    puts "Enter the time of the appointment in HH:MM AM/PM (e.g. 5:30 PM)."
     gets.chomp
   end
 
@@ -19,7 +29,7 @@ module ScheduleViewer
       when "type"
         "Invalid appointment type. Choose from haircut or shampoohaircut."
       when "phone"
-        "Invalid phone number. Enter a 10-digit phone number (e.g. 4152425164)."
+        "Invalid phone number. Enter a 10-digit phone number (e.g. (415)242-5164)."
       when "date"
         "Invalid date. Enter a date in the form MM/DD/YYYY (e.g. 12/15/2016)."
       when "time"
