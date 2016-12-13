@@ -15,7 +15,7 @@ module ScheduleViewer
   end
 
   def get_date
-    puts "Enter the date of the appointment in MM/DD/YYYY format (e.g. 12/15/2016)."
+    puts "Enter the date of the appointment in MM/DD/YY format (e.g. 12/15/16)."
     gets.chomp
   end
 
