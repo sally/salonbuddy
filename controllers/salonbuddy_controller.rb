@@ -29,7 +29,6 @@ class SalonBuddyController
     end
 
     def run
-      system "clear"
       MenuViewer.welcome
       menu_handler
     end

@@ -1,5 +1,6 @@
 module MenuViewer
   def self.welcome
+    system "clear"
     banner = "
                _             _               _     _             _    _
      ___  __ _| | ___  _ __ | |__  _   _  __| | __| |_   _      (_)  / )
