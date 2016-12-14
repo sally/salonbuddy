@@ -1,5 +1,8 @@
 # Include Ruby DateTime object library
 require 'date'
+require 'active_support/core_ext/date'
+require 'active_support/core_ext/time'
+require 'active_support/core_ext/date_time'
 
 
 # Require all files from controllers, helpers, models, views folders
