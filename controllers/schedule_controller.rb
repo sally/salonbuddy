@@ -61,8 +61,6 @@ class ScheduleController
       day = parsable_date[1]
       year = parsable_date.last
       start_datetime = DateTime.now.change(month: month, day: day, year: year)
-      DateTime.now.advance(days: -1).end_of_day
-      start_datetime < DateTime.now.advance(days: -1).end_of_day
       if start_datetime < DateTime.now.advance(days: -1).end_of_day
         ScheduleViewer.invalid_input("date_past")
         get_date

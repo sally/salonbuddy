@@ -26,7 +26,7 @@ class MenuController
 
     def schedule_handler
       schedule_controller = ScheduleController.new
-      @schedule.appointments << schedule_controller.appointment
+      @schedule.update_appointments(scheduecontr.make_appt) schedule_controller.appointment
       menu_handler
     end
 
