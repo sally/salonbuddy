@@ -7,8 +7,8 @@ class ScheduleController
     appointment_details_hash[:client_name] = get_name
     appointment_details_hash[:client_phone] = get_phone
     appointment_details_hash[:start_datetime] = get_time(get_date)
-    confirm(type, appointment_details_hash)
     appointment = type.new(appointment_details_hash)
+    confirm(appointment)
 
     ScheduleViewer.success(appointment)
 
@@ -85,8 +85,8 @@ class ScheduleController
     end
   end
 
-  def confirm(type, appointment_details)
-    response = ScheduleViewer.confirm(type.to_s, appointment_details)
+  def confirm(appointment)
+    response = ScheduleViewer.confirm(appointment)
 
     if response == "n"
       puts "LOL too bad"

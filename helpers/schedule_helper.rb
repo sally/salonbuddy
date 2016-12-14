@@ -1,6 +1,6 @@
 module ScheduleHelper
   def self.format_appointment_type(appointment_type)
-    appointment_type.split(/(?=[A-Z])/).join(" ")
+    appointment_type.to_s.split(/(?=[A-Z])/).join(" ")
   end
 
   def self.format_name(name)
