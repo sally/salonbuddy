@@ -1,7 +1,9 @@
-require_relative '../models/schedule.rb'
+require_relative 'schedule_controller'
+require_relative 'list_controller'
+require_relative '../models/schedule'
 require_relative '../views/menu_viewer'
 
-class SalonBuddyController
+class MenuController
     def initialize
       @schedule = Schedule.new
     end
@@ -11,7 +13,7 @@ class SalonBuddyController
 
       case user_input.first
         when "list"
-          puts "I totally didn't implement this yet."
+          list_handler
         when "schedule"
           schedule_handler
         when "exit"
@@ -23,11 +25,16 @@ class SalonBuddyController
     end
 
     def schedule_handler
+      schedule_controller = ScheduleController.new
+      @schedule.update_appointments(scheduecontr.make_appt) schedule_controller.appointment
+      menu_handler
+    end
 
+    def list_handler
+      ListController.new(@schedule.appointments)
     end
 
     def run
-      system "clear"
       MenuViewer.welcome
       menu_handler
     end

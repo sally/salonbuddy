@@ -1,5 +1,5 @@
-require_relative 'controllers/salonbuddycontroller.rb'
+require_relative 'controllers/menu_controller'
 
-scheduler = SalonBuddyController.new
+scheduler = MenuController.new
 
 scheduler.run

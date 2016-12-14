@@ -14,26 +14,48 @@ module ScheduleViewer
     gets.chomp
   end
 
-  def get_date
+  def self.ask_date
     puts "Enter the date of the appointment in MM/DD/YYYY format (e.g. 12/15/2016)."
     gets.chomp
   end
 
-  def get_time
-    puts "Enter the time of the appointment in HH:MM AM/PM (e.g. 5:30 PM)."
+  def self.ask_time
+    puts "Enter the time of the appointment in hh:mmAM/PM (e.g. 5:30PM)."
     gets.chomp
+  end
+
+  def self.confirm(appointment_type, appointment_hash)
+    system "clear"
+    puts "Here are your appointment details. Is this correct? (y/n)\n\n"
+    puts <<-CONFIRM.gsub(/^ {4}/, '')
+      Appointment Type: #{appointment_type}
+      Client Name:      #{appointment_hash[:client_name]}
+      Client Phone:     #{appointment_hash[:client_phone]}
+      Date:             #{appointment_hash[:start_datetime].strftime('%B %e, %Y')}
+      Time:             #{appointment_hash[:start_datetime].strftime('%I:%M%p')}
+    CONFIRM
+    gets.chomp
+  end
+
+  def self.success(appointment)
+    system "clear"
+    puts "Booked your #{appointment.class} apppointment on #{appointment.start_datetime.strftime('%B %e, %Y')} from #{appointment.start_datetime.strftime('%I:%M%p')} to #{appointment.end_datetime.strftime('%I:%M%p')} for #{appointment.client_name}."
   end
 
   def self.invalid_input(field)
     case field
       when "type"
-        "Invalid appointment type. Choose from haircut or shampoohaircut."
+        print "Invalid appointment type. "
       when "phone"
-        "Invalid phone number. Enter a 10-digit phone number (e.g. (415)242-5164)."
-      when "date"
-        "Invalid date. Enter a date in the form MM/DD/YYYY (e.g. 12/15/2016)."
-      when "time"
-        "Invalid time. Enter a time in the form HH:MM AM/PM (e.g. 5:30 PM)."
+        print "Invalid phone number. "
+      when "date_format"
+        print "Invalid date. "
+      when "date_past"
+        print "Invalid date. You can't book an appointment in the past. "
+      when "time_format"
+        print "Invalid time. "
+      when "time_past"
+        print "Invalid time. You can't book an appointment in the past. "
     end
   end
 end

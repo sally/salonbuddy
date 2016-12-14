@@ -1,5 +1,6 @@
 module MenuViewer
   def self.welcome
+    system "clear"
     banner = "
                _             _               _     _             _    _
      ___  __ _| | ___  _ __ | |__  _   _  __| | __| |_   _      (_)  / )
@@ -17,7 +18,7 @@ module MenuViewer
 
   def self.menu
     puts <<-MAINMENU.gsub(/^ {4}/, '')
-    Please type the command you wish to execute. To exit the program, type 'exit'.
+    \nPlease type the command you wish to execute. To exit the program, type 'exit'.
 
       List      # List all future appointments in ascending chronological order
       Schedule  # Schedule a specified type of appointment, either haircut or shampoohaircut

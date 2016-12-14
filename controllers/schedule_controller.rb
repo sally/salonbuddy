@@ -3,16 +3,25 @@ require_relative '../models/haircut'
 require_relative '../models/shampoohaircut'
 require_relative '../views/schedule_viewer'
 
+require 'date'
+require 'active_support/core_ext/date'
+require 'active_support/core_ext/time'
+require 'active_support/core_ext/date_time'
+
 class ScheduleController
+  attr_reader :appointment
 
   def initialize
     @type = get_type
-    @attr_hash = Hash.new
-    attr_hash[:client_name] = get_name
-    attr_hash[:client_phone] = get_phone
-    attr_hash[:date] = get_date
-    attr_hash[:time] = get_time
-    type.new(attr_hash)
+    @appointment_hash = Hash.new
+    appointment_hash[:client_name] = get_name
+    appointment_hash[:client_phone] = get_phone
+    @start_datetime = get_date
+    get_time
+    appointment_hash[:start_datetime] = @start_datetime
+    confirm
+    @appointment = @type.new(appointment_hash)
+    ScheduleViewer.success(@appointment)
   end
 
   def get_type
@@ -33,25 +42,76 @@ class ScheduleController
   end
 
   def get_phone
-    phone = ScheduleViewer.ask_phone
+    phone = ScheduleViewer.ask_phone.gsub(/\D/, '')
 
-    # put validations for phone number here
+    if phone.length == 10
+      phone
+    else
+      ScheduleViewer.invalid_input("phone")
+      get_phone
+    end
   end
 
   def get_date
     date = ScheduleViewer.ask_date
 
-    # put validations for date here
+    if date =~ /\A\d{1,2}\/\d{1,2}\/\d{4}\z/
+      parsable_date = date.split("/").map(&:to_i)
+      month = parsable_date.first
+      day = parsable_date[1]
+      year = parsable_date.last
+      start_datetime = DateTime.now.change(month: month, day: day, year: year)
+      if start_datetime < DateTime.now.advance(days: -1).end_of_day
+        ScheduleViewer.invalid_input("date_past")
+        get_date
+      else
+        start_datetime
+      end
+    else
+      ScheduleViewer.invalid_input("date_format")
+      get_date
+    end
   end
 
   def get_time
-    time = ScheduleViewer.ask_time
+    time = ScheduleViewer.ask_time.downcase
 
-    # put validations for time here
+    if time =~ /\A\d{1,2}:\d{2}(am|pm)\z/
+      hour = time.split(":").first.to_i
+      min = time.split(":").last[0..1].to_i
+      meridiem = time.split(":").last[2..3]
+
+      @start_datetime
+
+      if meridiem == "pm"
+        @start_datetime = @start_datetime.change(hour: hour+12, min: min)
+      else
+        @start_datetime = @start_datetime.change(hour: hour, min: min)
+      end
+
+      if @start_datetime <= DateTime.now
+        ScheduleViewer.invalid_input("time_past")
+        get_time
+      else
+        @start_datetime
+      end
+    else
+      ScheduleViewer.invalid_input("time_format")
+      get_time
+    end
+  end
+
+  def confirm
+    response = ScheduleViewer.confirm(@type.to_s, @appointment_hash)
+
+    if response == "n"
+      puts "LOL too bad"
+    end
+
   end
 
   private
 
   attr_reader :type
-  attr_accessor :attr_hash
+  attr_accessor :appointment_hash, :start_time
 end
