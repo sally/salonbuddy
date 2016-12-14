@@ -31,7 +31,7 @@ module ScheduleViewer
       Appointment Type: #{appointment_type}
       Client Name:      #{appointment_hash[:client_name]}
       Client Phone:     #{appointment_hash[:client_phone]}
-      Date:             #{appointment_hash[:start_datetime].strftime('%B %e, %Y')}
+      Date:             #{appointment_hash[:start_datetime].strftime('%B%e, %Y')}
       Time:             #{appointment_hash[:start_datetime].strftime('%I:%M%p')}
     CONFIRM
     gets.chomp
@@ -39,7 +39,7 @@ module ScheduleViewer
 
   def self.success(appointment)
     system "clear"
-    puts "Booked your #{appointment.class} apppointment on #{appointment.start_datetime.strftime('%B %e, %Y')} from #{appointment.start_datetime.strftime('%I:%M%p')} to #{appointment.end_datetime.strftime('%I:%M%p')} for #{appointment.client_name}."
+    puts "Booked your #{appointment.class} apppointment on #{appointment.start_datetime.strftime('%B%e, %Y')} from #{appointment.start_datetime.strftime('%I:%M%p')} to #{appointment.end_datetime.strftime('%I:%M%p')} for #{appointment.client_name}."
   end
 
   def self.invalid_input(field)

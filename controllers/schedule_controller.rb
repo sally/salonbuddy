@@ -1,27 +1,19 @@
-require_relative '../models/appointment'
-require_relative '../models/haircut'
-require_relative '../models/shampoohaircut'
-require_relative '../views/schedule_viewer'
-
-require 'date'
-require 'active_support/core_ext/date'
-require 'active_support/core_ext/time'
-require 'active_support/core_ext/date_time'
-
 class ScheduleController
   attr_reader :appointment
 
-  def initialize
-    @type = get_type
-    @appointment_hash = Hash.new
-    appointment_hash[:client_name] = get_name
-    appointment_hash[:client_phone] = get_phone
+  def make_appointment
+    type = get_type
+    appointment_details_hash = {}
+    appointment_details_hash[:client_name] = get_name
+    appointment_details_hash[:client_phone] = get_phone
     @start_datetime = get_date
-    get_time
-    appointment_hash[:start_datetime] = @start_datetime
-    confirm
-    @appointment = @type.new(appointment_hash)
-    ScheduleViewer.success(@appointment)
+    appointment_details_hash[:start_datetime] = get_time
+    confirm(type, appointment_details_hash)
+    appointment = type.new(appointment_details_hash)
+
+    ScheduleViewer.success(appointment)
+
+    appointment
   end
 
   def get_type
@@ -101,8 +93,8 @@ class ScheduleController
     end
   end
 
-  def confirm
-    response = ScheduleViewer.confirm(@type.to_s, @appointment_hash)
+  def confirm(type, appointment_details)
+    response = ScheduleViewer.confirm(type.to_s, appointment_details)
 
     if response == "n"
       puts "LOL too bad"
