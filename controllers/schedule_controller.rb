@@ -9,10 +9,6 @@ class ScheduleController
     appointment_details_hash[:start_datetime] = get_time(get_date)
     appointment = type.new(appointment_details_hash)
     confirm(appointment)
-
-    ScheduleViewer.success(appointment)
-
-    appointment
   end
 
   private
@@ -88,8 +84,14 @@ class ScheduleController
   def confirm(appointment)
     response = ScheduleViewer.confirm(appointment)
 
-    if response == "n"
-      puts "LOL too bad"
+    if response == "y"
+      ScheduleViewer.success(appointment)
+      appointment
+    elsif response == "n"
+      puts "Eh, too bad."
+    else
+      ScheduleViewer.invalid_input("confirmation")
+      confirm(appointment)
     end
 
   end

@@ -25,7 +25,6 @@ module ScheduleViewer
   end
 
   def self.confirm(appointment)
-    system "clear"
     puts "Here are your appointment details. Is this correct? (y/n)\n\n"
     puts <<-CONFIRM.gsub(/^ {4}/, '')
       Appointment Type: #{ScheduleHelper.format_appointment_type(appointment.class)}
@@ -58,6 +57,8 @@ module ScheduleViewer
         print "Invalid time. "
       when "time_past"
         print "Invalid time. You can't book an appointment in the past. "
+      when "confirmation"
+        print "Invalid response. Answer y for yes and n for no. "
     end
   end
 end
