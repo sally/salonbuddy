@@ -15,6 +15,8 @@ class ScheduleController
     appointment
   end
 
+  private
+
   def get_type
     type = ScheduleViewer.ask_type.downcase
 
@@ -27,6 +29,7 @@ class ScheduleController
       get_type
     end
   end
+
 
   def get_name
     name = ScheduleHelper.format_name(ScheduleViewer.ask_name)
@@ -91,8 +94,4 @@ class ScheduleController
 
   end
 
-  private
-
-  attr_reader :type
-  attr_accessor :appointment_hash, :start_time
 end

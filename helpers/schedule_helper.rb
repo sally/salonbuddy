@@ -1,4 +1,8 @@
 module ScheduleHelper
+  def self.format_appointment_type(appointment_type)
+    appointment_type.split(/(?=[A-Z])/).join(" ")
+  end
+
   def self.format_name(name)
     name.downcase.split(" ").map(&:capitalize).join(" ")
   end
@@ -41,6 +45,10 @@ module ScheduleHelper
     end
   end
 
+  def self.format_date(date)
+    date.strftime('%B %e, %Y')
+  end
+
   def self.format_time_input(time)
     time.downcase
   end
@@ -69,5 +77,9 @@ module ScheduleHelper
     else
       date
     end
+  end
+
+  def self.format_time(time)
+    time.strftime('%I:%M%p')
   end
 end
