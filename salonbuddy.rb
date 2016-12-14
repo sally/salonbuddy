@@ -1,4 +1,4 @@
-require_relative 'controllers/menu_controller'
+require_relative 'environment'
 
 scheduler = MenuController.new
 

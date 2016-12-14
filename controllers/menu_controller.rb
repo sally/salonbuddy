@@ -1,8 +1,3 @@
-require_relative 'schedule_controller'
-require_relative 'list_controller'
-require_relative '../models/schedule'
-require_relative '../views/menu_viewer'
-
 class MenuController
     def initialize
       @schedule = Schedule.new

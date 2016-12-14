@@ -1,13 +1,3 @@
-require_relative '../models/appointment'
-require_relative '../models/haircut'
-require_relative '../models/shampoohaircut'
-require_relative '../views/schedule_viewer'
-
-require 'date'
-require 'active_support/core_ext/date'
-require 'active_support/core_ext/time'
-require 'active_support/core_ext/date_time'
-
 class ScheduleController
   attr_reader :appointment
 
