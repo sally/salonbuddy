@@ -39,7 +39,7 @@ module ScheduleViewer
 
   def self.success(appointment)
     system "clear"
-    puts "Booked your #{appointment.class} apppointment on #{@appointment.start_date.strftime('%B %e, %Y')} from #{appointment.start_datetime.strftime('%I:%M%p')} to #{appointment.end_datetime.strftime('%I:%M%p')} for #{appointment.client_name}."
+    puts "Booked your #{appointment.class} apppointment on #{appointment.start_datetime.strftime('%B %e, %Y')} from #{appointment.start_datetime.strftime('%I:%M%p')} to #{appointment.end_datetime.strftime('%I:%M%p')} for #{appointment.client_name}."
   end
 
   def self.invalid_input(field)

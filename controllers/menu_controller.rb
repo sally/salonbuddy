@@ -31,7 +31,7 @@ class MenuController
     end
 
     def list_handler
-      ListController.new
+      ListController.new(@schedule.appointments)
     end
 
     def run

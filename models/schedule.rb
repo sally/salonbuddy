@@ -1,7 +1,7 @@
 class Schedule
   attr_accessor :appointments
-  
+
   def initialize
-    appointments = []
+    @appointments = []
   end
 end
