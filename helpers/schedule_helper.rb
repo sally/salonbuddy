@@ -1,5 +1,5 @@
 module ScheduleHelper
-  def self.format_name_input
+  def self.format_name
 
   end
 
