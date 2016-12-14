@@ -82,18 +82,39 @@ class ScheduleController
   end
 
   def confirm(appointment)
-    response = ScheduleViewer.confirm(appointment)
+    ScheduleViewer.confirm
+    response = ScheduleViewer.details(appointment)
 
     if response == "y"
       ScheduleViewer.success(appointment)
       appointment
     elsif response == "n"
-      puts "Eh, too bad."
+      puts "lel"
     else
       ScheduleViewer.invalid_input("confirmation")
       confirm(appointment)
     end
+  end
 
+  def update(appointment)
+    ScheduleViewer.update
+    response = ScheduleViewer.details(appointment)
+
+    case response
+      when "appointment type"
+
+      when "client name"
+
+      when "client phone"
+
+      when "date"
+
+      when "time"
+
+      else
+        ScheduleViewer.invalid_input("updating")
+        update(appointment)
+    end
   end
 
 end

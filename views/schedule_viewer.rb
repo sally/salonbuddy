@@ -24,16 +24,23 @@ module ScheduleViewer
     gets.chomp
   end
 
-  def self.confirm(appointment)
+  def self.confirm
     puts "Here are your appointment details. Is this correct? (y/n)\n\n"
-    puts <<-CONFIRM.gsub(/^ {4}/, '')
-      Appointment Type: #{ScheduleHelper.format_appointment_type(appointment.class)}
-      Client Name:      #{appointment.client_name}
-      Client Phone:     #{appointment.client_phone}
-      Date:             #{ScheduleHelper.format_date(appointment.start_datetime)}
-      Time:             #{ScheduleHelper.format_time(appointment.start_datetime)} - #{ScheduleHelper.format_time(appointment.end_datetime)}
-    CONFIRM
+  end
+
+  def self.details(appointment)
+    puts <<-DETAILS.gsub(/^ {4}/, '')
+    Appointment Type: #{ScheduleHelper.format_appointment_type(appointment.class)}
+    Client Name:      #{appointment.client_name}
+    Client Phone:     #{appointment.client_phone}
+    Date:             #{ScheduleHelper.format_date(appointment.start_datetime)}
+    Time:             #{ScheduleHelper.format_time(appointment.start_datetime)} - #{ScheduleHelper.format_time(appointment.end_datetime)}
+    DETAILS
     gets.chomp
+  end
+
+  def self.update
+    puts "Enter the name of the field you want to update (e.g. client phone).\nType 'done' when you are finished, and 'cancel' to cancel appointment creation.\n\n"
   end
 
   def self.success(appointment)
@@ -59,6 +66,9 @@ module ScheduleViewer
         print "Invalid time. You can't book an appointment in the past. "
       when "confirmation"
         print "Invalid response. Answer y for yes and n for no. "
+      when "updating"
+        print "Invalid field. "
+      end
     end
   end
 end

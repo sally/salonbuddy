@@ -1,6 +1,6 @@
 class Appointment
-  attr_reader :client_name, :client_phone, :start_datetime, :end_datetime
-  
+  attr_accessor :client_name, :client_phone, :start_datetime, :end_datetime
+
   def initialize(args)
     @client_name = args.fetch(:client_name)
     @client_phone = args.fetch(:client_phone)
