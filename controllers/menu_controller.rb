@@ -22,6 +22,7 @@ class MenuController
 
     def schedule_handler
       @schedule_controller.make_appointment(@schedule)
+      p @schedule.appointments
       menu_handler
     end
 
