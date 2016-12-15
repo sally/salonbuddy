@@ -42,7 +42,7 @@ module ScheduleViewer
   def self.success(appointment)
     system "clear"
     puts <<-SUCCESS.gsub(/^ {6}/, '')
-      Booked your #{ScheduleHelper.format_appointment_type(appointment.class)} apppointment on #{ScheduleHelper.format_date(appointment.start_datetime)} from #{ScheduleHelper.format_time(appointment.start_datetime)} to #{ScheduleHelper.format_time(appointment.end_datetime)} for #{appointment.client_name}.
+      Booked your #{ScheduleHelper.format_appointment_type(appointment.class)} appointment on #{ScheduleHelper.format_date(appointment.start_datetime)} from #{ScheduleHelper.format_time(appointment.start_datetime)} to #{ScheduleHelper.format_time(appointment.end_datetime)} for #{appointment.client_name}.
     SUCCESS
   end
 
