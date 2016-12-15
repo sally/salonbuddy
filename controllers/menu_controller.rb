@@ -17,7 +17,7 @@ class MenuController
           puts "Thank you for using SalonBuddy. :)"
         else
           MenuViewer.invalid_input
-          user_input = Viewer.menu.downcase
+          menu_handler
         end
     end
 
