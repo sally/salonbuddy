@@ -54,7 +54,7 @@ module ScheduleHelper
   end
 
   def self.validate_time_format(time)
-    if time =~ /\A\d{1,2}:\d{2}(am|pm)\z/ && ["00", "15", "30", "45"].include?(time[-2..-1])
+    if time =~ /\A\d{1,2}:\d{2}(am|pm)\z/ && ["00", "15", "30", "45"].include?(time[-4..-3])
       time
     else
       false
