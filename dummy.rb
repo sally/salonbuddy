@@ -11,10 +11,18 @@ end
 
 class Dog < Pet
   NOISE = "BORK"
+
+  def initialize(name)
+    @name = name
+  end
 end
 
 class Cat < Pet
   NOISE = "MOW"
+
+  def initialize(name)
+    @name = name
+  end
 end
 
 b = DateTime.parse('93/5/18')

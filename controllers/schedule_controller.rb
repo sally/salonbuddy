@@ -1,14 +1,16 @@
 class ScheduleController
   attr_reader :appointment
 
-  def make_appointment
+  def make_appointment(schedule)
     type = get_type
     appointment_details_hash = {}
     appointment_details_hash[:client_name] = get_name
     appointment_details_hash[:client_phone] = get_phone
     appointment_details_hash[:start_datetime] = get_time(get_date)
     appointment = type.new(appointment_details_hash)
-    confirm(appointment)
+    if confirm(appointment)
+      schedule.add_appointment(appointment)
+    end
   end
 
   private
@@ -89,32 +91,39 @@ class ScheduleController
       ScheduleViewer.success(appointment)
       appointment
     elsif response == "n"
-      puts "lel"
+      ScheduleViewer.cancel
+      false
     else
       ScheduleViewer.invalid_input("confirmation")
       confirm(appointment)
     end
   end
 
-  def update(appointment)
-    ScheduleViewer.update
-    response = ScheduleViewer.details(appointment)
-
-    case response
-      when "appointment type"
-
-      when "client name"
-
-      when "client phone"
-
-      when "date"
-
-      when "time"
-
-      else
-        ScheduleViewer.invalid_input("updating")
-        update(appointment)
-    end
-  end
+  # def update(appointment)
+  #   ScheduleViewer.update
+  #   response = ScheduleViewer.details(appointment)
+  #
+  #   case response
+  #     when "appointment type"
+  #        type = get_type
+  #        if type != appointment.class
+  #          appointment = type.new(appointment.as_hash)
+  #        end
+  #       update(appointment)
+  #     when "client name"
+  #
+  #     when "client phone"
+  #
+  #     when "date"
+  #
+  #     when "time"
+  #
+  #     when "cancel"
+  #       ScheduleViewer.cancel
+  #     else
+  #       ScheduleViewer.invalid_input("updating")
+  #       update(appointment)
+  #   end
+  # end
 
 end
