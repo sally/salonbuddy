@@ -66,7 +66,7 @@ module ScheduleViewer
       when "time_past"
         print "Invalid time. You can't book an appointment in the past. "
       when "time_booked"
-        print "Invalid time. There is a conflict with #{ScheduleHelper.format_appointment_type(conflict.class)} from #{ScheduleHelper.format_time(conflict.start_datetime)}-#{ScheduleHelper.format_time(conflict.end_datetime)} for #{conflict.client_name} during that time. "
+        print "Invalid time. There is a conflict with #{ScheduleHelper.format_appointment_type(conflict_appointment.class)} from #{ScheduleHelper.format_time(conflict_appointment.start_datetime)}-#{ScheduleHelper.format_time(conflict_appointment.end_datetime)} for #{conflict_appointment.client_name} during that time. "
       when "confirmation"
         print "Invalid response. Answer y for yes and n for no. "
     end
