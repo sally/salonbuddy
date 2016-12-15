@@ -98,32 +98,4 @@ class ScheduleController
       confirm(appointment)
     end
   end
-
-  # def update(appointment)
-  #   ScheduleViewer.update
-  #   response = ScheduleViewer.details(appointment)
-  #
-  #   case response
-  #     when "appointment type"
-  #        type = get_type
-  #        if type != appointment.class
-  #          appointment = type.new(appointment.as_hash)
-  #        end
-  #       update(appointment)
-  #     when "client name"
-  #
-  #     when "client phone"
-  #
-  #     when "date"
-  #
-  #     when "time"
-  #
-  #     when "cancel"
-  #       ScheduleViewer.cancel
-  #     else
-  #       ScheduleViewer.invalid_input("updating")
-  #       update(appointment)
-  #   end
-  # end
-
 end

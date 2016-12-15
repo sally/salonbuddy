@@ -39,10 +39,6 @@ module ScheduleViewer
     gets.chomp
   end
 
-  # def self.update
-  #   puts "Enter the name of the field you want to update (e.g. client phone).\nType 'done' when you are finished, and 'cancel' to cancel appointment creation.\n\n"
-  # end
-
   def self.success(appointment)
     system "clear"
     puts <<-SUCCESS.gsub(/^ {4}/, '')
@@ -71,8 +67,6 @@ module ScheduleViewer
         print "Invalid time. You can't book an appointment in the past. "
       when "confirmation"
         print "Invalid response. Answer y for yes and n for no. "
-      # when "updating"
-      #   print "Invalid field. "
     end
   end
 end
