@@ -1,0 +1,135 @@
+salonbuddy :> ruby salonbuddy.rb
+
+               _             _               _     _             _    _
+     ___  __ _| | ___  _ __ | |__  _   _  __| | __| |_   _      (_)  / )
+    / __|/ _` | |/ _ \| '_ \| '_ \| | | |/ _` |/ _` | | | |       | (_/
+    \__ \ (_| | | (_) | | | | |_) | |_| | (_| | (_| | |_| |      _+/
+    |___/\__,_|_|\___/|_| |_|_.__/ \__,_|\__,_|\__,_|\__, |     //|\
+                                                     |___/     // | )
+                                                              (/  |/
+
+Welcome to SalonBuddy, the leading tool for hairdressers for keeping track of haircut appointments.
+
+Please type the command you wish to execute. To exit the program, type 'exit'.
+
+  List      # List all future appointments in ascending chronological order
+  Schedule  # Schedule a specified type of appointment, either haircut or shampoohaircut
+
+schedul
+Invalid input. Please try again.
+
+Please type the command you wish to execute. To exit the program, type 'exit'.
+
+  List      # List all future appointments in ascending chronological order
+  Schedule  # Schedule a specified type of appointment, either haircut or shampoohaircut
+
+schedule
+Enter the type of appointment (haircut or shampoohaircut).
+haircu t
+Invalid appointment type. Enter the type of appointment (haircut or shampoohaircut).
+haircut
+Enter the name of the client.
+chris
+Enter the client's 10-digit phone number (e.g. (415)242-5164).
+123123123
+Invalid phone number. Enter the client's 10-digit phone number (e.g. (415)242-5164).
+1231231231
+Enter the date of the appointment in MM/DD/YYYY format (e.g. 12/15/2016).
+12/14/2016
+Invalid date. You can't book an appointment in the past. Enter the date of the appointment in MM/DD/YYYY format (e.g. 12/15/2016).
+12/15/2016
+Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM).
+10:50am
+Invalid time. Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM).
+11:00am
+Here are your appointment details. Is this correct? (y/n)
+
+Appointment Type: Haircut
+Client Name:      Chris
+Client Phone:     (123)123-1231
+Date:             Dec 15, 2016
+Time:             11:00AM-11:30AM
+y
+Booked your Haircut appointment on Dec 15, 2016 from 11:00AM to 11:30AM for Chris.
+
+Please type the command you wish to execute. To exit the program, type 'exit'.
+
+  List      # List all future appointments in ascending chronological order
+  Schedule  # Schedule a specified type of appointment, either haircut or shampoohaircut
+
+schedule
+Enter the type of appointment (haircut or shampoohaircut).
+shampoohaircut
+Enter the name of the client.
+Alex
+Enter the client's 10-digit phone number (e.g. (415)242-5164).
+(456)456-4564
+Enter the date of the appointment in MM/DD/YYYY format (e.g. 12/15/2016).
+12/15/2016
+Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM).
+11:00am
+Invalid time. There is a conflict with Haircut from 11:00AM-11:30AM for Chris. Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM).
+10:45am
+Invalid time. There is a conflict with Haircut from 11:00AM-11:30AM for Chris. Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM).
+10:30am
+Invalid time. There is a conflict with Haircut from 11:00AM-11:30AM for Chris. Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM).
+10:15am
+Invalid time. There is a conflict with Haircut from 11:00AM-11:30AM for Chris. Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM).
+10:00am
+Here are your appointment details. Is this correct? (y/n)
+
+Appointment Type: Shampoo Haircut
+Client Name:      Alex
+Client Phone:     (456)456-4564
+Date:             Dec 15, 2016
+Time:             10:00AM-11:00AM
+y
+Booked your Shampoo Haircut appointment on Dec 15, 2016 from 10:00AM to 11:00AM for Alex.
+
+Please type the command you wish to execute. To exit the program, type 'exit'.
+
+  List      # List all future appointments in ascending chronological order
+  Schedule  # Schedule a specified type of appointment, either haircut or shampoohaircut
+
+list
+
+  DATE          TIME             CLIENT NAME  CLIENT PHONE   APPOINTMENT TYPE
+  Dec 15, 2016  10:00AM-11:00AM  Alex         (456)456-4564  Shampoo Haircut
+  Dec 15, 2016  11:00AM-11:30AM  Chris        (123)123-1231  Haircut
+
+Please type the command you wish to execute. To exit the program, type 'exit'.
+
+  List      # List all future appointments in ascending chronological order
+  Schedule  # Schedule a specified type of appointment, either haircut or shampoohaircut
+
+schedule
+Enter the type of appointment (haircut or shampoohaircut).
+haircut
+Enter the name of the client.
+alice
+Enter the client's 10-digit phone number (e.g. (415)242-5164).
+7897897897
+Enter the date of the appointment in MM/DD/YYYY format (e.g. 12/15/2016).
+1/2/2017
+Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM).
+11:15:am
+Invalid time. Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM).
+11:15am
+Here are your appointment details. Is this correct? (y/n)
+
+Appointment Type: Haircut
+Client Name:      Alice
+Client Phone:     (789)789-7897
+Date:             Jan  2, 2017
+Time:             11:15AM-11:45AM
+n
+Cancelled appointment creation.
+
+Please type the command you wish to execute. To exit the program, type 'exit'.
+
+  List      # List all future appointments in ascending chronological order
+  Schedule  # Schedule a specified type of appointment, either haircut or shampoohaircut
+
+exit
+Thank you for using SalonBuddy. :)
+salonbuddy :>
