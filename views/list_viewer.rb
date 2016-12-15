@@ -1,6 +1,7 @@
 module ListViewer
   def self.display_appointments(appointments)
     puts <<-HEADERS.gsub(/^ {4}/, '  ')
+    
     DATE          TIME             CLIENT NAME  CLIENT PHONE   APPOINTMENT TYPE
     HEADERS
     appointments.each do |appointment|
