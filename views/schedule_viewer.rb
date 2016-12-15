@@ -20,7 +20,7 @@ module ScheduleViewer
   end
 
   def self.ask_time
-    puts "Enter the time of the appointment in hh:mmAM/PM (e.g. 5:30PM)."
+    puts "Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM)."
     gets.chomp
   end
 
