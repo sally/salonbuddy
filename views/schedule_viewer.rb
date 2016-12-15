@@ -51,7 +51,7 @@ module ScheduleViewer
     puts "Cancelled appointment creation."
   end
 
-  def self.invalid_input(field)
+  def self.invalid_input(field, conflict_appointment = nil)
     case field
       when "type"
         print "Invalid appointment type. "
@@ -65,6 +65,8 @@ module ScheduleViewer
         print "Invalid time. "
       when "time_past"
         print "Invalid time. You can't book an appointment in the past. "
+      when "time_booked"
+        print "Invalid time. There is a conflict with #{ScheduleHelper.format_appointment_type(conflict.class)} from #{ScheduleHelper.format_time(conflict.start_datetime)}-#{ScheduleHelper.format_time(conflict.end_datetime)} for #{conflict.client_name} during that time. "
       when "confirmation"
         print "Invalid response. Answer y for yes and n for no. "
     end

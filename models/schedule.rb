@@ -1,5 +1,5 @@
 class Schedule
-  attr_reader :appointments
+  attr_reader :appointments, :time_table
 
   def initialize
     @appointments = []

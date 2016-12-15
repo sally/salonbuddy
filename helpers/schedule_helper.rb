@@ -79,6 +79,28 @@ module ScheduleHelper
     end
   end
 
+  def self.validate_datetime_unbooked(schedule, type, datetime)
+    p "Validating unbookedness for datetime"
+    p schedule.time_table
+    p schedule.time_table[datetime]
+    p schedule.time_table[datetime.advance(minutes:15)]
+    if schedule.time_table[datetime]
+      return schedule.time_table[datetime]
+    elsif schedule.time_table[datetime.advance(minutes:15)]
+      schedule.time_table[datetime.advance(minutes:15)]
+    end
+
+    if type == ShampooHaircut
+      if schedule.time_table[datetime.advance(minutes: 30)]
+        return schedule.time_table[datetime.advance(minutes: 30)]
+      elsif schedule.time_table[datetime.advance(minutes: 45)]
+        return schedule.time_table[datetime.advance(minutes: 45)]
+      end
+    end
+
+    datetime
+  end
+
   def self.format_time(time)
     time.strftime('%I:%M%p')
   end
