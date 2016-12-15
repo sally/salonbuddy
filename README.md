@@ -1,5 +1,15 @@
 # SalonBuddy
 
+```
+           _             _               _     _            _    _
+ ___  __ _| | ___  _ __ | |__  _   _  __| | __| |_   _     (_)  / )
+/ __|/ _` | |/ _ \| '_ \| '_ \| | | |/ _` |/ _` | | | |      | (_/
+\__ \ (_| | | (_) | | | | |_) | |_| | (_| | (_| | |_| |     _+/
+|___/\__,_|_|\___/|_| |_|_.__/ \__,_|\__,_|\__,_|\__, |    //|\
+                                                 |___/    // | )
+                                                         (/  |/
+```
+
 Welcome to SalonBuddy, the leading tool for hairdressers for keeping track of haircut appointments.
 
 ## File Structure
@@ -65,6 +75,28 @@ The **views** folder holds files responsible for displaying all or a portion of 
 
 The root folder holds files responsible for setting up the program and its dependencies.
 
-  * `environment.rb`: 
-  * `Gemfile`:
-  * `salonbuddy.rb`:
+  * `environment.rb`: Consolidates all dependencies and relevant files
+  * `Gemfile`: List of all gem dependencies for gem manager Bundler
+  * `Gemfile.lock`: Snapshot of all gems in Gemfile along with their associated dependencies
+  * `salonbuddy.rb`: Main file for executing program sequence
+
+## Running SalonBuddy locally
+
+To run SalonBuddy locally, install the Bundler gem to retrieve all dependencies, then execute `salonbuddy.rb`:
+
+  1. Run `gem install bundler` to install the Bundler gem manager
+  2. Run `bundle install` to install dependencies
+  3. Run `ruby salonbuddy.rb` to initiate SalonBuddy
+
+## Design Decisions
+
+Some design decisions when writing this program involved implementing using the MVC architecture, creating an environment file to consolidate dependencies, and prioritization of appointment attribute validation.
+
+  * **MVC Architecture:** The MVC style allows for separation of concerns when splitting up business logic, data access, and presentation. Further, MVC encourages adherence to conventions, allowing for maintainability and scalability.
+  * **Environment File:** In order to use Ruby's DateTime library most efficiently, I had to require some utility provided by Active Support from Rails. Further, I thought it best to require all files from my program in one file. For these two reasons, I created an environment file to meet these two goals.
+  * **Prioritization of Appointment Attribute Validation:** I thought it important for certain validations to exist when creating an appointment, including:
+    * Proper formatting of date and time
+    * Prevent creating appointment in the past
+    * Prevent double-booking appointment times
+
+Next steps in continuing with developing SalonBuddy would involve implementing updating/deletion of appointments in the confirmation screen and list screen.
