@@ -27,8 +27,8 @@ class MenuController
     end
 
     def list_handler
-      @list_controller.list_appointments(@schedule.appointments
-      menu_handler)
+      @list_controller.list_appointments(@schedule.appointments)
+      menu_handler
     end
 
     def run
