@@ -2,6 +2,7 @@ class MenuController
     def initialize
       @schedule = Schedule.new
       @schedule_controller = ScheduleController.new
+      @list_controller = ListController.new
     end
 
     def menu_handler
@@ -22,12 +23,12 @@ class MenuController
 
     def schedule_handler
       @schedule_controller.make_appointment(@schedule)
-      p @schedule.appointments
       menu_handler
     end
 
     def list_handler
-      ListController.new(@schedule.appointments)
+      @list_controller.list_appointments(@schedule.appointments
+      menu_handler)
     end
 
     def run
