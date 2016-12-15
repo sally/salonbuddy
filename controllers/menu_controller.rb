@@ -5,6 +5,13 @@ class MenuController
       @list_controller = ListController.new
     end
 
+    def run
+      MenuViewer.welcome
+      menu_handler
+    end
+
+    private
+
     def menu_handler
       user_input = MenuViewer.menu.downcase.split(" ")
 
@@ -27,12 +34,7 @@ class MenuController
     end
 
     def list_handler
-      @list_controller.list_appointments(@schedule.appointments)
-      menu_handler
-    end
-
-    def run
-      MenuViewer.welcome
+      @list_controller.list_appointments(@schedule)
       menu_handler
     end
 end

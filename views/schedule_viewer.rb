@@ -41,7 +41,7 @@ module ScheduleViewer
 
   def self.success(appointment)
     system "clear"
-    puts <<-SUCCESS.gsub(/^ {4}/, '')
+    puts <<-SUCCESS.gsub(/^ {6}/, '')
       Booked your #{ScheduleHelper.format_appointment_type(appointment.class)} apppointment on #{ScheduleHelper.format_date(appointment.start_datetime)} from #{ScheduleHelper.format_time(appointment.start_datetime)} to #{ScheduleHelper.format_time(appointment.end_datetime)} for #{appointment.client_name}.
     SUCCESS
   end
@@ -51,7 +51,7 @@ module ScheduleViewer
     puts "Cancelled appointment creation."
   end
 
-  def self.invalid_input(field)
+  def self.invalid_input(field, conflict_appointment = nil)
     case field
       when "type"
         print "Invalid appointment type. "
@@ -65,6 +65,8 @@ module ScheduleViewer
         print "Invalid time. "
       when "time_past"
         print "Invalid time. You can't book an appointment in the past. "
+      when "time_booked"
+        print "Invalid time. There is a conflict with #{ScheduleHelper.format_appointment_type(conflict_appointment.class)} from #{ScheduleHelper.format_time(conflict_appointment.start_datetime)}-#{ScheduleHelper.format_time(conflict_appointment.end_datetime)} for #{conflict_appointment.client_name}. "
       when "confirmation"
         print "Invalid response. Answer y for yes and n for no. "
     end

@@ -2,14 +2,15 @@ class ScheduleController
   attr_reader :appointment
 
   def make_appointment(schedule)
-    type = get_type
+    @schedule = schedule
+    @type = get_type
     appointment_details_hash = {}
     appointment_details_hash[:client_name] = get_name
     appointment_details_hash[:client_phone] = get_phone
     appointment_details_hash[:start_datetime] = get_time(get_date)
-    appointment = type.new(appointment_details_hash)
+    appointment = @type.new(appointment_details_hash)
     if confirm(appointment)
-      schedule.add_appointment(appointment)
+      @schedule.add_appointment(appointment)
     end
   end
 
@@ -27,7 +28,6 @@ class ScheduleController
       get_type
     end
   end
-
 
   def get_name
     name = ScheduleHelper.format_name(ScheduleViewer.ask_name)
@@ -72,7 +72,14 @@ class ScheduleController
       validated_upcoming_datetime = ScheduleHelper.validate_time_future(date, validated_time)
 
       if validated_upcoming_datetime
-        validated_upcoming_datetime
+        validated_unbooked_datetime = ScheduleHelper.validate_datetime_unbooked(@schedule, @type, validated_upcoming_datetime)
+
+        if validated_unbooked_datetime.instance_of?(DateTime)
+          validated_unbooked_datetime
+        else
+          ScheduleViewer.invalid_input("time_booked", validated_unbooked_datetime)
+          get_time(date)
+        end
       else
         ScheduleViewer.invalid_input("time_past")
         get_time(date)

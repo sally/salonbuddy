@@ -1,6 +1,6 @@
 class ListController
-  def list_appointments(appointments)
-    pending_appointments = Appointment.pending(appointments)
+  def list_appointments(schedule)
+    pending_appointments = schedule.pending
 
     ListViewer.display_appointments(pending_appointments)
   end
