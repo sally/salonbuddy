@@ -15,16 +15,16 @@ class Schedule
   def pending
     @appointments.drop_while { |appt| appt.end_datetime < DateTime.now }
   end
-  
+
   private
 
   def log_in_time_table(appointment)
-    @time_table[appointment.start_datetime] = 1
-    @time_table[appointment.start_datetime.advance(minutes: 15)] = 1
+    @time_table[appointment.start_datetime] = appointment
+    @time_table[appointment.start_datetime.advance(minutes: 15)] = appointment
 
     if appointment.class == ShampooHaircut
-      @time_table[appointment.start_datetime.advance(minutes: 30)] = 1
-      @time_table[appointment.start_datetime.advance(minutes: 45)] = 1
+      @time_table[appointment.start_datetime.advance(minutes: 30)] = appointment
+      @time_table[appointment.start_datetime.advance(minutes: 45)] = appointment
     end
   end
 end
