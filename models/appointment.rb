@@ -8,10 +8,6 @@ class Appointment
     set_end_time(@start_datetime)
   end
 
-  def self.pending(appointments)
-    appointments.drop_while { |appt| appt.end_datetime < DateTime.now }
-  end
-
   private
 
   def set_end_time(start_datetime)
