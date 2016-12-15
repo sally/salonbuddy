@@ -1,5 +1,5 @@
 class ListController
-  def initialize(appointments)
-    @appointments = appointments
+  def list_appointments(appointments)
+    pending_appointments = Appointment.pending(appointments)
   end
 end

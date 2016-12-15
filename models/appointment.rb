@@ -8,11 +8,15 @@ class Appointment
     set_end_time(@start_datetime)
   end
 
-  def as_hash
-    hash = {}
-    self.instance_variables.each {|var| hash[var.to_s.delete("@").to_sym] = self.instance_variable_get(var) }
-    hash.delete(end_datetime)
+  def self.pending(appointments)
+    appointments.drop_while { |appt| appt.end_datetime < DateTime.now }
   end
+
+  # def as_hash
+  #   hash = {}
+  #   self.instance_variables.each {|var| hash[var.to_s.delete("@").to_sym] = self.instance_variable_get(var) }
+  #   hash.delete(end_datetime)
+  # end
 
   private
 
