@@ -2,7 +2,7 @@ class MenuController
     def initialize
       @schedule = Schedule.new
       @schedule_controller = ScheduleController.new
-
+      @list_controller = ListController.new
     end
 
     def menu_handler
@@ -17,16 +17,18 @@ class MenuController
           puts "Thank you for using SalonBuddy. :)"
         else
           MenuViewer.invalid_input
-          user_input = Viewer.menu.downcase
+          menu_handler
         end
     end
 
     def schedule_handler
-      @schedule.add_appointment(@schedule_controller.make_appointment)      menu_handler
+      @schedule_controller.make_appointment(@schedule)
+      menu_handler
     end
 
     def list_handler
-      ListController.new(@schedule.appointments)
+      @list_controller.list_appointments(@schedule.appointments)
+      menu_handler
     end
 
     def run

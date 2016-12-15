@@ -1,6 +1,6 @@
 module ScheduleViewer
   def self.ask_type
-    puts "Enter the type of appointment to create (haircut or shampoohaircut)."
+    puts "Enter the type of appointment (haircut or shampoohaircut)."
     gets.chomp
   end
 
@@ -20,26 +20,35 @@ module ScheduleViewer
   end
 
   def self.ask_time
-    puts "Enter the time of the appointment in hh:mmAM/PM (e.g. 5:30PM)."
+    puts "Enter the time of the appointment in hh:mmAM/PM. Appointments must be scheduled at 15-minute offsets from the hour (e.g. 12:15PM, 4:00PM, 5:45PM, 6:30PM)."
     gets.chomp
   end
 
-  def self.confirm(appointment_type, appointment_hash)
-    system "clear"
+  def self.confirm
     puts "Here are your appointment details. Is this correct? (y/n)\n\n"
-    puts <<-CONFIRM.gsub(/^ {4}/, '')
-      Appointment Type: #{appointment_type}
-      Client Name:      #{appointment_hash[:client_name]}
-      Client Phone:     #{appointment_hash[:client_phone]}
-      Date:             #{appointment_hash[:start_datetime].strftime('%B%e, %Y')}
-      Time:             #{appointment_hash[:start_datetime].strftime('%I:%M%p')}
-    CONFIRM
+  end
+
+  def self.details(appointment)
+    puts <<-DETAILS.gsub(/^ {4}/, '')
+    Appointment Type: #{ScheduleHelper.format_appointment_type(appointment.class)}
+    Client Name:      #{appointment.client_name}
+    Client Phone:     #{appointment.client_phone}
+    Date:             #{ScheduleHelper.format_date(appointment.start_datetime)}
+    Time:             #{ScheduleHelper.format_time(appointment.start_datetime)}-#{ScheduleHelper.format_time(appointment.end_datetime)}
+    DETAILS
     gets.chomp
   end
 
   def self.success(appointment)
     system "clear"
-    puts "Booked your #{appointment.class} apppointment on #{appointment.start_datetime.strftime('%B%e, %Y')} from #{appointment.start_datetime.strftime('%I:%M%p')} to #{appointment.end_datetime.strftime('%I:%M%p')} for #{appointment.client_name}."
+    puts <<-SUCCESS.gsub(/^ {4}/, '')
+      Booked your #{ScheduleHelper.format_appointment_type(appointment.class)} apppointment on #{ScheduleHelper.format_date(appointment.start_datetime)} from #{ScheduleHelper.format_time(appointment.start_datetime)} to #{ScheduleHelper.format_time(appointment.end_datetime)} for #{appointment.client_name}.
+    SUCCESS
+  end
+
+  def self.cancel
+    system "clear"
+    puts "Cancelled appointment creation."
   end
 
   def self.invalid_input(field)
@@ -56,6 +65,8 @@ module ScheduleViewer
         print "Invalid time. "
       when "time_past"
         print "Invalid time. You can't book an appointment in the past. "
+      when "confirmation"
+        print "Invalid response. Answer y for yes and n for no. "
     end
   end
 end
