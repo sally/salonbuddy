@@ -37,6 +37,7 @@ environment.rb
 Gemfile
 README.md
 salonbuddy.rb
+sample_run.txt
 ```
 
 ### Controllers
@@ -79,6 +80,9 @@ The root folder holds files responsible for setting up the program and its depen
   * `Gemfile`: List of all gem dependencies for gem manager Bundler
   * `Gemfile.lock`: Snapshot of all gems in Gemfile along with their associated dependencies
   * `salonbuddy.rb`: Main file for executing program sequence
+  * `sample_run.txt`: Contains sample outputs of program sequence
+
+Please reference `sample_run.txt` in the root folder to see a sample program sequence, with intentional typo inputs and attempted double-booking to show validations and formatting features.
 
 ## Running SalonBuddy locally
 
