@@ -29,7 +29,6 @@ class ScheduleController
     end
   end
 
-
   def get_name
     name = ScheduleHelper.format_name(ScheduleViewer.ask_name)
   end
