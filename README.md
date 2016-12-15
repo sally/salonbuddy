@@ -60,3 +60,11 @@ The **views** folder holds files responsible for displaying all or a portion of 
   * `list_viewer.rb`: Displays list of all appointments
   * `menu_viewer.rb`: Displays welcome message and main menu options
   * `schedule_viewer.rb`: Displays prompts for appointment creation
+
+### Root
+
+The root folder holds files responsible for setting up the program and its dependencies.
+
+  * `environment.rb`: 
+  * `Gemfile`:
+  * `salonbuddy.rb`:
