@@ -26,3 +26,8 @@ class Cat < Pet
 end
 
 b = DateTime.parse('93/5/18')
+
+array = [1,3,5]
+puts "#{array.each do |num|
+p num
+end}"

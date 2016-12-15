@@ -7,6 +7,15 @@ module ScheduleHelper
     name.downcase.split(" ").map(&:capitalize).join(" ")
   end
 
+  def self.truncate_name(name)
+    if name.length > 11
+      name[0..10]
+    else
+      (11 - name.length).times { name += " " }
+      name
+    end
+  end
+
   def self.format_phone_input(phone)
     phone.gsub(/\D/, "")
   end
@@ -46,7 +55,7 @@ module ScheduleHelper
   end
 
   def self.format_date(date)
-    date.strftime('%B %e, %Y')
+    date.strftime('%b %e, %Y')
   end
 
   def self.format_time_input(time)
