@@ -50,5 +50,13 @@ The **models** folder holds the files that are responsible for storage of primar
 
   * `appointment.rb`: Maintains data for general appointments, such as client name, start/end times, etc.
   * `haircut.rb`: Inherits from appointment, specifies duration of appointment
-  * `schedule.rb`: 
+  * `schedule.rb`: Maintains data for schedule, holds all created appointments and a time table to tell which time slots are booked
   * `shampoohaircut.rb`: Inherits from appointment, specifies duration of appointment
+
+### Views
+
+The **views** folder holds files responsible for displaying all or a portion of the data to the user. They are primarily called by the controller upon appropriate user input.
+
+  * `list_viewer.rb`: Displays list of all appointments
+  * `menu_viewer.rb`: Displays welcome message and main menu options
+  * `schedule_viewer.rb`: Displays prompts for appointment creation
