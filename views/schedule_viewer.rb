@@ -34,7 +34,7 @@ module ScheduleViewer
     Client Name:      #{appointment.client_name}
     Client Phone:     #{appointment.client_phone}
     Date:             #{ScheduleHelper.format_date(appointment.start_datetime)}
-    Time:             #{ScheduleHelper.format_time(appointment.start_datetime)} - #{ScheduleHelper.format_time(appointment.end_datetime)}
+    Time:             #{ScheduleHelper.format_time(appointment.start_datetime)}-#{ScheduleHelper.format_time(appointment.end_datetime)}
     DETAILS
     gets.chomp
   end
